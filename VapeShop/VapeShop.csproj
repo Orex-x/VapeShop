@@ -10,4 +10,15 @@
       <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.1" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Views\Account\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="wwwroot\img\main.png" />
+      <Resource Include="wwwroot\img\main.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+    </ItemGroup>
+
 </Project>

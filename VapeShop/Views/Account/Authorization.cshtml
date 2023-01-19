@@ -1,0 +1,37 @@
+﻿@model AuthorizationViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+<style>
+    .input-form .link{
+          color: #F0BC5E;
+          background: none;
+          font-family: 'Arial', sans-serif;
+      }
+</style>
+
+<body class="text-center">
+<form class="form-signin" asp-action="Authorization" asp-controller="Account" asp-antiforgery="true">
+    <img src="img/main.png" alt="">
+    <h1 class="h3 mb-3 font-weight-normal">Авторизация</h1>
+    
+     <!-- Email input -->
+    <div class="input-form">
+        <input class="form-control" asp-for="Email" type="email" placeholder="Почта" />
+        <span asp-validation-for="Email" />
+    </div>
+    
+     <!-- Password input -->
+    <div class="input-form">
+        <input class="form-control" asp-for="Password" type="password" placeholder="Пароль" />
+        <span asp-validation-for="Password" />
+    </div>
+    
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
+    <div class="input-form">
+        <a class="link" asp-action="Registration" asp-controller="Account">Регистрация</a>
+    </div>
+</form>
+</body>
