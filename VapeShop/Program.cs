@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using VapeShop;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,6 +7,18 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<DatabaseContext>();
+
+// установка конфигурации подключения
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options => //CookieAuthenticationOptions
+    {
+        options.LoginPath = new PathString("/Account/Authorization");
+    });
+
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession();
+
+
 
 var app = builder.Build();
 
@@ -23,7 +36,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthorization();
+app.UseAuthentication();    // аутентификация
+app.UseAuthorization();     // авторизация
 
 app.MapControllerRoute(
     name: "default",

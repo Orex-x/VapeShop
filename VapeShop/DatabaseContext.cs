@@ -14,6 +14,8 @@ public class DatabaseContext : DbContext
     public DbSet<PromoCode> PromoCodes { get; set; }
     public DbSet<Provider> Providers { get; set; }
     public DbSet<User> Users { get; set; }
+    
+    public DbSet<ProductBasket> ProductBaskets { get; set; }
 
     public DatabaseContext()
     {
@@ -23,6 +25,6 @@ public class DatabaseContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseNpgsql(
-            "host=localhost;database=VapeShop;username=postgres;password=123");
+            "host=localhost;port=5432;database=VapeShop;username=postgres;password=333");
     }
 }

@@ -1,0 +1,93 @@
+﻿@model Client
+
+@{
+    Layout = "_Layout";
+}
+
+
+<body class="text-center">
+<div class="panel" style="margin-top: 50px">
+    
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form action="" enctype="multipart/form-data" method="post">
+                    <div class="user-photo">
+                        <div class="user-photo__img-wrap img-plug">
+                            <img width="64" height="64" alt="User avatar" src="//images.wbstatic.net/img/0/medium/PersonalPhoto.png?2">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-8">
+                <h2 class="personal-data__header">
+                    <span>@Model.User.SecondName @Model.User.FirstName @Model.User.LastName</span>
+                </h2>
+            </div>
+        </div>
+
+        <div class="margin-top-40">
+            <div class="row">
+                <div class="col">
+                    <h3 class="personal-data__data-title">Email</h3>
+                    <p class="personal-data__data">@Model.User.Email</p>
+                </div>
+                <div class="col">
+                    <h3 class="personal-data__data-title">Логин</h3>
+                    <p class="personal-data__data">@Model.User.Login</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel" style="height: auto; margin-top: 80px; margin-bottom: 50px">
+    
+    <h3 class="personal-data__data-title">Избранные товары</h3>
+    
+    @{
+        if (Model.FavoriteProducts.Count > 0)
+        {
+            foreach (var product in Model.FavoriteProducts)
+            {
+                <div class="card" style="border-radius: 30px; margin-top: 30px">
+                    <div class="row">
+                        <div class="col">
+                            <img src="@product.PathToImage" height="300" width="300" alt="..." style="padding: 30px">
+                        </div>
+                        <div class="col">
+                            <div class="right">
+                                <h3 class="personal-data__data-title" style="padding-top: 30px; padding-right: 30px">₽ @product.Price</h3>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="card-body">
+                        <h5 class="card-title">@product.Name</h5>
+                        <p class="card-text">@product.Description</p>
+                        
+                        <a asp-area="" asp-route-id="@product.Id" asp-controller="Account" asp-action="UpdateFavoriteProduct">
+                            <button class="btn btn-danger" type="submit">  
+                                Удалить из избранного
+                            </button>
+                        </a>
+                        
+                        <a asp-area="" asp-route-id="@product.Id" asp-controller="Basket" asp-action="AddProductInBasket">
+                             <button type="button" class="btn btn-primary">Добавить в корзину</button>
+                        </a>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <h5 class="personal-data__data-title" style="margin-top: 40px; margin-left: 15px">У вас еще нету избранных товаров</h5>
+            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">  
+                    Перейти на главную
+                </button>
+            </a>
+        }
+    }
+</div>
+</body>
