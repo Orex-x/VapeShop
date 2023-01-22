@@ -50,13 +50,10 @@ namespace VapeShop.Controllers
                 {
                     var _ = client.FavoriteProducts.FirstOrDefault(x => x.Id == id);
                     if (_ == null)
-                    {
                         client.FavoriteProducts.Add(product);
-                    }
                     else
-                    {
                         client.FavoriteProducts.Remove(product);   
-                    }
+                    
                     _context.Clients.Update(client);
                     await _context.SaveChangesAsync();
                 }

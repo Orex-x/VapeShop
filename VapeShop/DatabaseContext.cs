@@ -7,7 +7,6 @@ public class DatabaseContext : DbContext
 {
     public DbSet<Category> Categorys { get; set; }
     public DbSet<Client> Clients { get; set; }
-    public DbSet<Discount> Discounts { get; set; }
     public DbSet<HR> HRs { get; set; }
     public DbSet<Manager> Managers { get; set; }
     public DbSet<Product> Products { get; set; }

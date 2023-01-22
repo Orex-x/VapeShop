@@ -52,6 +52,17 @@ public class BasketController : Controller
         }
         return RedirectToAction("Basket", "Basket");
     }
+
+    public async Task UpdateProductAmount(int id, int amount)
+    {
+        var productBasket = await _context.ProductBaskets.FirstOrDefaultAsync(x => x.Id == id);
+        if (productBasket != null)
+        {
+            productBasket.Amount = amount;
+            _context.ProductBaskets.Update(productBasket);
+            await _context.SaveChangesAsync();
+        }
+    }
     
     [Authorize]
     public async Task<RedirectToActionResult> RemoveProductInBasket(int id)

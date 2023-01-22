@@ -24,6 +24,15 @@
                     <span>@Model.User.SecondName @Model.User.FirstName @Model.User.LastName</span>
                 </h2>
             </div>
+            <div class="col">
+                <div class="right">
+                    <a class="nav-link text-light" asp-area="" asp-controller="Account" asp-action="Logout">
+                        <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">
+                            Выйти
+                        </button>
+                    </a>
+                </div>
+            </div>
         </div>
 
         <div class="margin-top-40">
@@ -36,6 +45,7 @@
                     <h3 class="personal-data__data-title">Логин</h3>
                     <p class="personal-data__data">@Model.User.Login</p>
                 </div>
+                
             </div>
         </div>
     </div>
@@ -51,13 +61,39 @@
             foreach (var product in Model.FavoriteProducts)
             {
                 <div class="card" style="border-radius: 30px; margin-top: 30px">
-                    <div class="row">
+                     @if (product.Discount != 0)
+                     {
+                         <span class="badge badge-success" style="width: 80px; height: 20px; margin: 15px;">Скидка @product.Discount%</span>
+                     }
+                     <div class="row">
                         <div class="col">
                             <img src="@product.PathToImage" height="300" width="300" alt="..." style="padding: 30px">
                         </div>
                         <div class="col">
                             <div class="right">
-                                <h3 class="personal-data__data-title" style="padding-top: 30px; padding-right: 30px">₽ @product.Price</h3>
+                                @*Цена и скидка*@
+                                @{
+                                    if (product.Discount == 0)
+                                    {
+                                        <h3 class="personal-data__data-title" style="padding-top: 30px; padding-right: 30px">
+                                            ₽ @product.Price
+                                        </h3>
+                                    }
+                                    else
+                                    {
+                                        <h3 class="personal-data__data-title" style="padding-top: 30px; padding-right: 30px">
+                                            ₽ @(product.Price * (100 - product.Discount) / 100)
+                                        </h3>
+
+                                        <p class="personal-data__data-title"
+                                           style="padding-top: 30px; 
+                                           margin-top: -20px;
+                                           padding-right: 30px; font-size: 16px; 
+                                           color: #a1a1a1;text-decoration: line-through">
+                                            ₽ @product.Price
+                                        </p>
+                                    }
+                                }
                             </div>
                         </div>
                     </div>
