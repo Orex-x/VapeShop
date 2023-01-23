@@ -32,7 +32,8 @@ public class HomeController : Controller
                     Description = "Тип затяжки: Смешанная Ёмкость аккумулятора: 900",
                     Name = "Rincoe Jellybox Nano 2 Pod Kit 26W 900mAh",
                     Price = 1990,
-                    PathToImage = @"/img/products/Pod/1.jpg"
+                    PathToImage = @"/img/products/Pod/1.jpg",
+                    Discount = 20
                 },
                 new()
                 {
@@ -40,7 +41,8 @@ public class HomeController : Controller
                     Description = "Тип затяжки: Сигаретная Ёмкость аккумулятора: 750",
                     Name = "Smoant Charon Baby POD Kit 750 mah with картридж Charon Baby",
                     Price = 1890,
-                    PathToImage = @"/img/products/Pod/2.jpg"
+                    PathToImage = @"/img/products/Pod/2.jpg",
+                    Discount = 10
                 },
                 new()
                 {
@@ -64,7 +66,8 @@ public class HomeController : Controller
                     Description = "Тип затяжки: Смешанная Ёмкость аккумулятора: 1000",
                     Name = "Smoant Charon Baby Plus Pod Kit",
                     Price = 2290,
-                    PathToImage = @"/img/products/Pod/5.jpg"
+                    PathToImage = @"/img/products/Pod/5.jpg",
+                    Discount = 20
                 },
                 new()
                 {
@@ -95,7 +98,8 @@ public class HomeController : Controller
                     Description = "Сопротивление: 0.7 Ом",
                     Name = "Картридж Voopoo Vmate (V Thru Pro / Vmate Infinity / Vmate E)",
                     Price = 260,
-                    PathToImage = @"/img/products/PodCartridge/1.jpg"
+                    PathToImage = @"/img/products/PodCartridge/1.jpg",
+                    Discount = 5
                 },
                 new()
                 {
@@ -127,7 +131,8 @@ public class HomeController : Controller
                     Description = "",
                     Name = "Teslacigs pod TPOD Картридж",
                     Price = 260,
-                    PathToImage = @"/img/products/PodCartridge/5.jpg"
+                    PathToImage = @"/img/products/PodCartridge/5.jpg",
+                    Discount = 5
                 },
             }
         }, new()
@@ -150,7 +155,8 @@ public class HomeController : Controller
                     Description = "Тип затяжки: Кальянная",
                     Name = "Испаритель Smoant S Series (Santi, Charon Baby Plus)",
                     Price = 230,
-                    PathToImage = @"/img/products/Vaporizers/2.jpg"
+                    PathToImage = @"/img/products/Vaporizers/2.jpg",
+                    Discount = 10
                 },
                 new()
                 {
@@ -214,7 +220,8 @@ public class HomeController : Controller
                     Description = "Тип затяжки: Сигаретная Ёмкость аккумулятора: 650",
                     Name = "Elf Bar Ultra BC5000 Strawberry Watermelon Bubble Gum одноразовая электронная сигарета с подзарядкой",
                     Price = 1450,
-                    PathToImage = @"/img/products/Disposable/1.jpg"
+                    PathToImage = @"/img/products/Disposable/1.jpg",
+                    Discount = 20
                 },
                 new()
                 {
@@ -254,7 +261,8 @@ public class HomeController : Controller
                     Description = "Тип затяжки: Сигаретная Ёмкость аккумулятора: 650",
                     Name = "Elf Bar Ultra BC5000 Watermelon Ice одноразовая электронная сигарета с подзарядкой",
                     Price = 1450,
-                    PathToImage = @"/img/products/Disposable/6.jpg"
+                    PathToImage = @"/img/products/Disposable/6.jpg",
+                    Discount = 50
                 },
                 new()
                 {
@@ -301,7 +309,8 @@ public class HomeController : Controller
                     Description = "Вкус: Ментол PG/VG: 60/40 Объем: 100 мл",
                     Name = "Жидкость Joyeliq Ментол (100 мл)",
                     Price = 1190,
-                    PathToImage = @"/img/products/LiquidVaping/2.jpg"
+                    PathToImage = @"/img/products/LiquidVaping/2.jpg",
+                    Discount = 5
                 },
                 new()
                 {
@@ -412,7 +421,8 @@ public class HomeController : Controller
                     Description = "Вкус: Marlboro / Табак PG/VG: 50/50 Объем: 10 мл",
                     Name = "Жидкость Joyeliq Salt USA Mix (10 мл)",
                     Price = 760,
-                    PathToImage = @"/img/products/LiquidVaping/16.jpg"
+                    PathToImage = @"/img/products/LiquidVaping/16.jpg",
+                    Discount = 20
                 },
                 new()
                 {
@@ -483,7 +493,8 @@ public class HomeController : Controller
                     Description = "",
                     Name = "Eleaf iStick Pico Kit 21700 with ELLO 4000 mAh",
                     Price = 5590,
-                    PathToImage = @"/img/products/Vapes/4.jpg"
+                    PathToImage = @"/img/products/Vapes/4.jpg",
+                    Discount = 25
                 },
                 new()
                 {
@@ -507,7 +518,8 @@ public class HomeController : Controller
                     Description = "Тип затяжки: Сигаретная. Ёмкость аккумулятора: 2000",
                     Name = "Vandy Vape Jackaroo Pod Kit 70W 2000mAh",
                     Price = 2990,
-                    PathToImage = @"/img/products/Vapes/7.jpg"
+                    PathToImage = @"/img/products/Vapes/7.jpg",
+                    Discount = 5
                 },
             }
         }, new()
@@ -545,7 +557,8 @@ public class HomeController : Controller
                     Description = "(100W, без аккумулятора)",
                     Name = "Мод Geekvape S100 Aegis Solo 2",
                     Price = 3590,
-                    PathToImage = @"/img/products/Box/4.jpg"
+                    PathToImage = @"/img/products/Box/4.jpg",
+                    Discount = 15
                 }, new()
                 {
                     Amount = 10,
@@ -580,7 +593,8 @@ public class HomeController : Controller
                     Description = "",
                     Name = "Voopoo Argus MT Mod 100W",
                     Price = 3950,
-                    PathToImage = @"/img/products/Box/9.jpg"
+                    PathToImage = @"/img/products/Box/9.jpg",
+                    Discount = 15
                 }, new()
                 {
                     Amount = 10,
@@ -613,20 +627,24 @@ public class HomeController : Controller
     
     public async Task<IActionResult> Index()
     {
-       
+
+      
+        
+        
         var email = User.Identity?.Name;
         Client? client = null;
         if (email != null)
         {
             client = await _context.Clients
                 .Include(x => x.User)
+                .Include(x => x.Orders)
                 .Include(x => x.FavoriteProducts)
                 .FirstOrDefaultAsync(x => x.User.Email == email);
         }
         
         var categories = await _context.Categorys.ToListAsync();
-        var products = await _context.Products.ToListAsync();
-        //var products = await _context.Products.Where(x => x.Discount > 0).ToListAsync();
+        //var products = await _context.Products.ToListAsync();
+        var products = await _context.Products.Where(x => x.Discount > 0).ToListAsync();
         
         var model = new IndexViewModel
         {

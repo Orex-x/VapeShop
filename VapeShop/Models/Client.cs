@@ -11,4 +11,5 @@ public class Client : BaseEntity
     public ICollection<Product> FavoriteProducts { get; set; }
     
     public ICollection<ProductBasket> Basket { get; set; }
+    public ICollection<Order> Orders { get; set; }
 }

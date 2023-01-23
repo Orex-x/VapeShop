@@ -1,0 +1,70 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+
+<style>
+    .container4 {
+         margin: 0;
+         position: absolute;
+         top: 400px;
+         left: 50%;
+         margin-right: -50%;
+         transform: translate(-50%, -50%) 
+         }
+</style>
+
+<div class="container4">
+    <div class="card" style="width: 500px;">
+        <div class="card-header">
+            <h2 class="personal-data__data-title" style="margin: 20px">Данные кредитной карты</h2>
+        </div>
+        <div class="card-body">
+            <!-- Card Number -->
+            <input class="form-control mr-sm-2" type="text" style="margin-top: 10px" placeholder="0000 0000 0000 0000">
+            
+            <div class="row">
+                
+                <div class="col" style="margin-top: 10px">
+
+                    <select class="form-select" aria-label="Default select example">
+                        <option value="january">January</option>
+                        <option value="february">February</option>
+                        <option value="march">March</option>
+                        <option value="april">April</option>
+                        <option value="may">May</option>
+                        <option value="june">June</option>
+                        <option value="july">July</option>
+                        <option value="august">August</option>
+                        <option value="september">September</option>
+                        <option value="october">October</option>
+                        <option value="november">November</option>
+                        <option value="december">December</option>
+                    </select>
+                </div>
+                <div class="col" style="margin-top: 10px">
+                    <select class="form-select" aria-label="Default select example">
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                        <option value="2027">2027</option>
+                    </select>
+                </div>
+            </div>
+            
+            <input max="3" class="form-control mr-sm-2" style="width: 100px; margin-top: 10px" type="password" placeholder="CVV">
+            
+
+            <a class="nav-link text-light" style="margin-top: 10px" asp-area="" asp-controller="Order" asp-action="CreateOrder">
+                <button class="btn btn-primary" type="submit">
+                    Оплатить
+                </button>
+            </a>
+        </div>
+    </div>
+</div>

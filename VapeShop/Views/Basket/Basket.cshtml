@@ -137,8 +137,6 @@
       var sumDiscount = sumWithoutDiscount - sumWithDiscount;
   }
   
-
-  
   <div class="row" style="margin-bottom: 100px">
         <div class="col"></div>
       <div class="col-5">
@@ -299,7 +297,14 @@
                                 </div>
                             </p>
                             
-                            <a href="#" class="btn btn-primary">Оплатить</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Order" asp-action="PayOrder">
+                                <button class="btn btn-primary" type="submit">
+                                    Оплатить
+                                </button>
+                            </a>
+                            
+                            
+                            
                             <p style="color: #6e6e6e; margin-top: 20px">Согласен с условиями Правил пользования торговой площадкой</p>
                         </div>
                     </div>

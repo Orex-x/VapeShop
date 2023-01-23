@@ -29,6 +29,9 @@ namespace VapeShop.Controllers
             var client = await _context.Clients
                 .Include(x => x.User)
                 .Include(x => x.FavoriteProducts)
+                .Include(x => x.Orders)
+                .ThenInclude(x => x.Products)
+                .ThenInclude(x => x.Product)
                 .FirstOrDefaultAsync(x => x.User.Email == email);
             
             return View(client);
@@ -86,11 +89,13 @@ namespace VapeShop.Controllers
                 user.Password = hasher.HashPassword(user, model.Password);
                 await Authenticate(user.Email);
 
-                var client = new Client()
+                var client = new Client
                 {
                     User = user,
                     Balance = 0,
-                    FavoriteProducts = new List<Product>()
+                    FavoriteProducts = new List<Product>(),
+                    Basket = new List<ProductBasket>(),
+                    Orders = new List<Order>()
                 };
                         
                 await _context.Clients.AddAsync(client);
@@ -127,7 +132,7 @@ namespace VapeShop.Controllers
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimsIdentity.DefaultNameClaimType, userName)
+                new (ClaimsIdentity.DefaultNameClaimType, userName)
             };
 
             var id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
