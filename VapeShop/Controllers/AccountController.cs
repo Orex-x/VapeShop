@@ -36,6 +36,20 @@ namespace VapeShop.Controllers
             
             return View(client);
         }
+
+        public async Task<IActionResult> Orders()
+        {
+            var email = User.Identity?.Name;
+
+            var client = await _context.Clients
+                .Include(x => x.User)
+                .Include(x => x.Orders)
+                .ThenInclude(x => x.Products)
+                .ThenInclude(x => x.Product)
+                .FirstOrDefaultAsync(x => x.User.Email == email);
+            
+            return View(client);
+        }
         
         
         [Authorize]

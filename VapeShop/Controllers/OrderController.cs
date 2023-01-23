@@ -30,27 +30,29 @@ public class OrderController : Controller
             .ThenInclude(x => x.Product)
             .FirstOrDefaultAsync(x => x.User.Email == email);
 
-        var sumWithDiscount  = client.Basket.Select(x => x.Amount * x.Product?.Price * (100 - x.Product?.Discount) / 100).Sum();
-        
-        var order = new Order
+        if (client.Basket.Count > 0)
         {
-            Products = new List<ProductBasket>(),
-            DateTime = DateTime.Now,
-            OrderStatus = OrderStatus.Collecting,
-            Price = sumWithDiscount ?? 0
-        };
+            var sumWithDiscount  = client.Basket.Select(x => x.Amount * x.Product?.Price * (100 - x.Product?.Discount) / 100).Sum();
+        
+            var order = new Order
+            {
+                Products = new List<ProductBasket>(),
+                DateTime = DateTime.Now,
+                OrderStatus = OrderStatus.Collecting,
+                Price = sumWithDiscount ?? 0
+            };
 
-        foreach (var productBasket in client.Basket)
-        {
-            order.Products.Add(productBasket);
+            foreach (var productBasket in client.Basket)
+            {
+                order.Products.Add(productBasket);
+            }
+        
+            client.Orders.Add(order);
+            client.Basket.Clear();
+            _context.Clients.Update(client);
+            await _context.SaveChangesAsync();
         }
-        
-        client.Orders.Add(order);
-        client.Basket.Clear();
-        _context.Clients.Update(client);
-        await _context.SaveChangesAsync();
-        
-        
+
         return RedirectToAction("AccountClient", "Account");
     }
 }

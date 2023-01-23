@@ -627,10 +627,6 @@ public class HomeController : Controller
     
     public async Task<IActionResult> Index()
     {
-
-      
-        
-        
         var email = User.Identity?.Name;
         Client? client = null;
         if (email != null)
@@ -655,6 +651,32 @@ public class HomeController : Controller
         
         return View(model);
     }
+    
+    public async Task<IActionResult> AllProducts()
+    {
+        var email = User.Identity?.Name;
+        Client? client = null;
+        if (email != null)
+        {
+            client = await _context.Clients
+                .Include(x => x.User)
+                .Include(x => x.Orders)
+                .Include(x => x.FavoriteProducts)
+                .FirstOrDefaultAsync(x => x.User.Email == email);
+        }
+        
+        var products = await _context.Products.ToListAsync();
+        
+        var model = new ProductsViewModel
+        {
+            Title = "Все товары",
+            Client = client,
+            Products = products
+        };
+        
+        return View(model);
+    }
+    
     
     public async Task<IActionResult> Products(int idCategory)
     {

@@ -95,7 +95,7 @@
                         <a class="nav-link text-light"  asp-area="" asp-controller="Home" asp-action="Index">Главная</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="AllProducts">Товары</a>
                     </li>
                    
                 </ul>
@@ -110,6 +110,12 @@
             </div>
             
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-lg-end">
+                
+                <a class="nav-link text-light" asp-area="" asp-controller="Account" asp-action="Orders">
+                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">
+                        Мои заказы
+                    </button>
+                </a>
                 
                 <a class="nav-link text-light" asp-area="" asp-controller="Basket" asp-action="Basket">
                     <button class="btn btn-outline-light my-2 my-sm-0" type="submit">
