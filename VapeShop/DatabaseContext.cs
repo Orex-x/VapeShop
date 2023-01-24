@@ -17,7 +17,14 @@ public class DatabaseContext : DbContext
 
     public DatabaseContext()
     {
-        Database.EnsureCreated();
+        try
+        {
+            Database.EnsureCreated();
+        }
+        catch (Exception)
+        {
+            // ignored
+        }
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

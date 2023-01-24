@@ -8,7 +8,7 @@
 <body class="text-center" style="margin-bottom: 100px">
 <h3 class="personal-data__data-title" style="margin-top: 50px; margin-bottom: 50px">Мои заказы</h3>
 @{
-    if (Model.Orders.Count > 0)
+    if (Model.Orders?.Count > 0)
     {
         foreach (var order in Model.Orders)
         {

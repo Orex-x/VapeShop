@@ -1,3 +1,4 @@
+using EasyData.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using VapeShop;
 
@@ -21,6 +22,11 @@ builder.Services.AddSession();
 
 
 var app = builder.Build();
+
+app.MapEasyData(options => {
+    options.UseDbContext<DatabaseContext>();
+});
+
 
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 

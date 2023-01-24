@@ -45,6 +45,9 @@ public class OrderController : Controller
             foreach (var productBasket in client.Basket)
             {
                 order.Products.Add(productBasket);
+
+                productBasket.Product!.NumberSales += productBasket.Amount;
+                _context.Products.Update(productBasket.Product);
             }
         
             client.Orders.Add(order);

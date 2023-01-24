@@ -37,6 +37,7 @@ namespace VapeShop.Controllers
             return View(client);
         }
 
+        [Authorize]
         public async Task<IActionResult> Orders()
         {
             var email = User.Identity?.Name;
@@ -125,6 +126,11 @@ namespace VapeShop.Controllers
         {
             if (ModelState.IsValid)
             {
+                //костыль но намана, если потом нормально сделать
+                if (model.Email.Equals("admin@gmail.com") && model.Password.Equals("admin"))
+                    return RedirectToAction("EasyData", "Admin");
+                
+
                 var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
                 if (user != null)
                 {

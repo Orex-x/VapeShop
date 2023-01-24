@@ -1,0 +1,109 @@
+﻿@model VapeShop.ViewModels.ChartViewModel;
+
+@{
+    Layout = "_LayoutAdmin";
+}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div>
+    <div class="panel-light" style="width: auto;height: auto; margin-top: 80px; margin-bottom: 50px; margin-right: 50px">
+        <div class="card" style="border-radius: 25px; margin-top: 30px">
+            <div style="margin: 20px">
+                <h1>Количество проданных товаров</h1>
+            </div>
+            <div class="card-body">
+                <canvas id="BarChart" max-height="100" max-width="100"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-light" style="width: auto;height: auto; margin-top: 80px; margin-bottom: 50px; margin-right: 50px">
+        <div class="card" style="border-radius: 25px; margin-top: 30px">
+            <div style="margin: 20px">
+                <h1>Количество продаж за неделю</h1>
+            </div>
+            <div class="card-body">
+                <canvas id="LineChart" height="100" width="100"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+  const barCTX = document.getElementById('BarChart');
+    
+  const lineCTX = document.getElementById('LineChart');
+
+  var BarLabels = [];
+  var BarData = [];
+  
+  var LineLabels = [];
+  var LineData = [];
+  
+  @if (Model.BarLabels.Count == Model.BarData.Count)
+  {
+      foreach (var i in Model.BarLabels)
+      {
+          @:BarLabels.push('@Html.Raw(i)');
+      
+      }
+    
+      foreach (var i in Model.BarData)
+      {
+          @:BarData.push(@i);
+      }
+    
+      foreach (var i in Model.LineLabels)
+      {
+          @:LineLabels.push('@Html.Raw(i)');
+      }
+      
+      foreach (var i in Model.LineData)
+      {
+          @:LineData.push(@i);
+      }
+  }
+  
+  new Chart(barCTX, {
+    type: 'bar',
+    data: {
+      labels: BarLabels,
+      datasets: [{
+        label: 'Количество продаж',
+        data: BarData,
+        borderWidth: 1
+      }]
+    },
+    options: {
+            scales: {
+              x: {
+                ticks: {
+                  // For a category axis, the val is the index so the lookup via getLabelForValue is needed
+                  callback: function() {
+                    // Hide every 2nd tick label
+                    return '';
+                  },
+                }
+              }
+            }
+          },
+  });
+  
+  new Chart(lineCTX, {
+    type: 'line',
+    data: {
+     labels: LineLabels,
+      datasets: [{
+        label: 'Количество продаж',
+        data: LineData,
+        
+         hoverOffset: 4
+      }]
+    },
+     fill: false,
+     borderColor: 'rgb(75, 192, 192)',
+     tension: 0.1
+  });
+</script>

@@ -9,4 +9,6 @@ public class Product : BaseEntity
     
     public int Discount { get; set; }
     public string PathToImage { get; set; }
+    
+    public int NumberSales { get; set; }
 }
