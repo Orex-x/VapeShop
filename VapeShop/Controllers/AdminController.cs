@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics;
 using System.Runtime.InteropServices;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using VapeShop.ViewModels;
@@ -48,9 +47,7 @@ public class AdminController : Controller
                 .Where(x => x.DateTime.Date == date)
                 .Select(x => x.Products.Select(z => z.Amount).Sum())
                 .Sum();
-
-
-         
+            
             lineLabels.Add(date.DayOfWeek.ToString());
             lineData.Add(count);
             
@@ -66,7 +63,7 @@ public class AdminController : Controller
     }
     
     
-     public async Task ExportData()
+    public async Task ExportData()
     {
         const string dirName = @"C:\tmp\csv";
         if (!Directory.Exists(dirName)) Directory.CreateDirectory(@"C:\tmp\csv");
