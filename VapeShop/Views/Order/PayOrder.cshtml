@@ -1,7 +1,10 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model VapeShop.ViewModels.PayViewModel
+
+@{
     Layout = "_Layout";
 }
-
 
 <style>
     .container4 {
@@ -14,57 +17,77 @@
          }
 </style>
 
+
+<script src="/js/mask.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    
+      const cvc = document.getElementById('CVC');
+      const card_number = document.getElementById('card_number');
+      const maskCvc = {
+        mask: '000'
+      }
+      const maskCardNumber = {
+        mask: '0000-0000-0000-0000'
+      }
+      IMask(cvc, maskCvc);
+      IMask(card_number, maskCardNumber);
+    })
+</script>
+
+
 <div class="container4">
     <div class="card" style="width: 500px;">
         <div class="card-header">
             <h2 class="personal-data__data-title" style="margin: 20px">Данные кредитной карты</h2>
         </div>
-        <div class="card-body">
-            <!-- Card Number -->
-            <input class="form-control mr-sm-2" type="text" style="margin-top: 10px" placeholder="0000 0000 0000 0000">
-            
-            <div class="row">
+        
+        <form asp-action="CreateOrder" asp-controller="Order" asp-antiforgery="true">
+             <div class="card-body">
+                <!-- Card Number -->
+                <input id="card_number" asp-for="CardNumber" class="form-control mr-sm-2" type="text" style="margin-top: 10px" placeholder="0000 0000 0000 0000">
                 
-                <div class="col" style="margin-top: 10px">
-
-                    <select class="form-select" aria-label="Default select example">
-                        <option value="january">January</option>
-                        <option value="february">February</option>
-                        <option value="march">March</option>
-                        <option value="april">April</option>
-                        <option value="may">May</option>
-                        <option value="june">June</option>
-                        <option value="july">July</option>
-                        <option value="august">August</option>
-                        <option value="september">September</option>
-                        <option value="october">October</option>
-                        <option value="november">November</option>
-                        <option value="december">December</option>
-                    </select>
-                </div>
-                <div class="col" style="margin-top: 10px">
-                    <select class="form-select" aria-label="Default select example">
-                        <option value="2019">2019</option>
-                        <option value="2020">2020</option>
-                        <option value="2021">2021</option>
-                        <option value="2022">2022</option>
-                        <option value="2023">2023</option>
-                        <option value="2024">2024</option>
-                        <option value="2025">2025</option>
-                        <option value="2026">2026</option>
-                        <option value="2027">2027</option>
-                    </select>
-                </div>
-            </div>
+                <div class="row">
+                    
+                    <div class="col" style="margin-top: 10px">
             
-            <input max="3" class="form-control mr-sm-2" style="width: 100px; margin-top: 10px" type="password" placeholder="CVV">
-            
-
-            <a class="nav-link text-light" style="margin-top: 10px" asp-area="" asp-controller="Order" asp-action="CreateOrder">
-                <button class="btn btn-primary" type="submit">
+                        <select class="form-select" aria-label="Default select example">
+                            <option value="january">January</option>
+                            <option value="february">February</option>
+                            <option value="march">March</option>
+                            <option value="april">April</option>
+                            <option value="may">May</option>
+                            <option value="june">June</option>
+                            <option value="july">July</option>
+                            <option value="august">August</option>
+                            <option value="september">September</option>
+                            <option value="october">October</option>
+                            <option value="november">November</option>
+                            <option value="december">December</option>
+                        </select>
+                    </div>
+                    <div class="col" style="margin-top: 10px">
+                        <select class="form-select" aria-label="Default select example">
+                            <option value="2019">2019</option>
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <input id="CVC" asp-for="CVC" max="3" class="form-control mr-sm-2" style="width: 100px; margin-top: 10px" type="password" placeholder="CVV">
+                
+                <button class="btn btn-primary" style="margin-top: 10px" type="submit">
                     Оплатить
                 </button>
-            </a>
-        </div>
+             </div>
+        </form>
     </div>
 </div>

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using VapeShop.Models;
+using VapeShop.ViewModels;
 
 namespace VapeShop.Controllers;
 
@@ -19,8 +20,16 @@ public class OrderController : Controller
 
     
     [Authorize]
-    public async Task<RedirectToActionResult> CreateOrder()
+    public async Task<RedirectToActionResult> CreateOrder(PayViewModel model)
     {
+        
+        if(model.CardNumber.Length != 19)
+            return RedirectToAction("Basket", "Basket");
+        
+        if(model.CVC.Length != 3)
+            return RedirectToAction("Basket", "Basket");
+        
+        
         var email = User.Identity?.Name;
         var client = await _context.Clients
             .Include(x => x.User)
@@ -56,6 +65,6 @@ public class OrderController : Controller
             await _context.SaveChangesAsync();
         }
 
-        return RedirectToAction("AccountClient", "Account");
+        return RedirectToAction("Orders", "Account");
     }
 }
